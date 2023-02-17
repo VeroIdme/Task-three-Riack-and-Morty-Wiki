@@ -18,16 +18,19 @@ function App() {
     
   
   const handleChange = e => {
-    setChangeText(e.target.value)
+    e.preventDefault()
+    setChangeText(e.target.input.value)
+    e.target.input.value = ''
+   
   }
-  console.log(location?.residents)
+  
   return (
     <div className="App">
       <section className="container-prin-log"><article className="container-log"><img src='..//images/Rectangle 1.png'/></article></section>
       <section className="container-main">
-        <form className='searchBox'>
-          <input onChange={handleChange} type="text" placeholder="Type here the id's ubication" value={changeText} />
-          <button className='btn-search'>Search</button>
+        <form className='searchBox' onSubmit={handleChange}>
+          <input id="input" type="text" placeholder="Type here the id's ubication"  />
+          <button  className='btn-search'>Search</button>
         </form>
         <article className='location'><Location location={location}/></article>
       </section>
